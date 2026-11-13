@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Question ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffb6d5;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff0f6;
+            padding: 50px 30px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(255, 20, 100, 0.2);
+        }
+
+        h1 {
+            color: #ff4081;
+            font-size: 28px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        button {
+            border: none;
+            padding: 13px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yes {
+            background: #ff4081;
+            color: white;
+        }
+
+        #yes:hover {
+            background: #e91e63;
+            transform: scale(1.1);
+        }
+
+        #no {
+            background: white;
+            color: #ff4081;
+            border: 2px solid #ff4081;
+            position: fixed;
+            z-index: 10;
+        }
+
+        #message {
+            display: none;
+            color: #ff4081;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .heart {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+
+        <h1>Do u love me? ❤︎<br>Try to click NO!</h1>
+
+        <div class="buttons">
+            <button id="yes">Yes ❤️</button>
+            <button id="no">No 💔</button>
+        </div>
+
+        <p id="message">hhh i was know it babe ❤︎</p>
+    </div>
+
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+        const message = document.getElementById("message");
+
+        function moveButton() {
+            const maxX = window.innerWidth - noButton.offsetWidth - 10;
+            const maxY = window.innerHeight - noButton.offsetHeight - 10;
+
+            const randomX = Math.max(10, Math.random() * maxX);
+            const randomY = Math.max(10, Math.random() * maxY);
+
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        }
+
+        noButton.addEventListener("mouseenter", moveButton);
+        noButton.addEventListener("touchstart", function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+        noButton.addEventListener("click", moveButton);
+
+        yesButton.addEventListener("click", function() {
+            message.style.display = "block";
+            document.querySelector("h1").style.display = "none";
+            document.querySelector(".buttons").style.display = "none";
+            document.querySelector(".heart").innerHTML = "💗💗💗";
+        });
+    </script>
+
+</body>
+</html>
